@@ -46,7 +46,7 @@ const CardComponent = () => {
                     </div>
 
                     <div className="bg1" style={{ height: "250px", display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                        <div>
+                        <div style={{textAlign:"center"}}>
                             <h4>{cardData.firstName}</h4>
                             <h6 style={{ fontSize: "15px" }}>{cardData.profession}</h6>
                             <h6 style={{ fontSize: "15px" }}>{cardData.profile}</h6>
