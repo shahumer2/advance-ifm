@@ -1,0 +1,14 @@
+
+
+@media print {
+    .hide-on-print {
+      display: none;
+    }
+    .qr-card {
+      background: #D7B442 !important;
+    }
+    .qr-card img {
+      display: block;
+    }
+  }
+  
