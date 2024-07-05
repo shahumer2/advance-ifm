@@ -16,6 +16,7 @@ function App() {
       <div>
         <CustomNavbar />
         <Routes>
+        <Route path="/" element={<FormComponent />} />
           <Route path="/addEmp" element={<FormComponent />} />
           <Route path="/profile/view" element={<ViewProfile />} />
           <Route path="/profile/:id" element={<CardComponent />} />
