@@ -70,7 +70,7 @@ function FormComponent() {
     <section className="sec" style={{ padding: '2rem' }}>
       <div className="card mr-3 ml-3 w-full h-full">
         <div className="card-body bg-white">
-          <h2 className="font-weight-bold text-center text-uppercase">
+          <h2 className="font-weight-bold text-center text-uppercase mb-5">
            Add Employee
           </h2>
          
@@ -80,7 +80,7 @@ function FormComponent() {
             <div className="row" style={{marginBottom:"40px"}}>
                 <div className="col-md-12">
                   <div className="row">
-                    <div className="col-md-6 text-center pt-5">
+                    <div className="col-md-6 text-center pt-5 mb-3">
                       <label htmlFor="profilephoto" className="btn btn-outline-danger">Upload photo</label>
                       <input
                         type="file"
@@ -93,9 +93,9 @@ function FormComponent() {
                         onChange={handleFileChange}
                       />
                     </div>
-                    <div className="col-md-6">
-                      <div className="col-md-4 offset-md-4">
-                        <div style={{ border: '2px solid black', height: '150px', width: '150px', borderRadius: '4px', overflow: 'hidden' }}>
+                    <div className="col-md-6 ml-8">
+                      <div className="col-md-4 offset-md-4 ml-9">
+                        <div style={{ border: '2px solid black ml-5', height: '150px', width: '150px', borderRadius: '4px', overflow: 'hidden' }}>
                           <img alt="photoPreview" id="photoPreview" src="" height="150px" width="150px" />
                         </div>
                       </div>

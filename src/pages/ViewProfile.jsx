@@ -5,13 +5,13 @@ import { MdDelete } from "react-icons/md";
 
 const ViewProfile = () => {
   const [persons, setPersons] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [size, setSize] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
 
   const fetchPersons = async (page, size) => {
     try {
-      const response = await fetch(`http://localhost:8089/profile/view`, {
+      const response = await fetch(`http://localhost:8089/profile/view?page=${page}`, {
         method: 'GET',
       });
       const data = await response.json();
@@ -27,26 +27,24 @@ const ViewProfile = () => {
   }, [page, size]);
 
   const handleNextPage = () => {
-    if (page < totalPages - 1) {
+    if (page < totalPages) {
       setPage(page + 1);
     }
   };
 
   const handlePreviousPage = () => {
-    if (page > 0) {
+    if (page > 1) {
       setPage(page - 1);
     }
   };
 
   const handleDelete = async (id) => {
-    console.log("came herew");
     try {
       const response = await fetch(`http://localhost:8089/profile/${id}`, {
         method: 'DELETE',
       });
 
       if (response.ok) {
-        // Remove the deleted person from the state
         setPersons(persons.filter(person => person.id !== id));
         alert('Profile deleted successfully');
       } else {
@@ -75,9 +73,9 @@ const ViewProfile = () => {
               <th>Profession</th>
               <th>Mobile Number</th>
               <th>State</th>
-              <th>Actions</th>
+              <th>View Qr Card</th>
               <th>View Card</th>
-              <th>Action</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -103,9 +101,9 @@ const ViewProfile = () => {
                   <Link to={`/profile/update/${person.id}`} style={{ fontSize: "15px", width: "120px", marginRight: "3px" }}>
                     <FaEdit size="20px" />
                   </Link>
-                
+                 
                     <MdDelete onClick={() => handleDelete(person.id)} size="25px" />
-                
+                 
                 </td>
               </tr>
             ))}
@@ -114,10 +112,10 @@ const ViewProfile = () => {
       </div>
 
       <div className="d-flex justify-content-between">
-        <button className="btn btn-secondary" onClick={handlePreviousPage} disabled={page === 0}>
+        <button className="btn btn-secondary" onClick={handlePreviousPage} disabled={page === 1}>
           Previous
         </button>
-        <button className="btn btn-secondary" onClick={handleNextPage} disabled={page === totalPages - 1}>
+        <button className="btn btn-secondary" onClick={handleNextPage} disabled={page === totalPages}>
           Next
         </button>
       </div>
