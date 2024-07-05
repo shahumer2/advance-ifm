@@ -18,32 +18,22 @@ function CustomNavbar() {
     }, [location.pathname]); // Run effect whenever location.pathname changes
 
     return (
-        <Navbar bg="light" expand="lg">
-            <Navbar.Brand as={Link} to="/addEmp">
-                <img src="/images/STIE.png" width="90" height="40" alt="Logo" />
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    <Nav.Link as={Link} to="/addEmp" className={activeLink === 'Add User' ? 'active' : ''} onClick={() => setActiveLink('Add User')}>
-                        Add Emp
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/profile/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
-                        View Emp
-                    </Nav.Link>
-                    {/* Conditionally render NavDropdown only on larger screens */}
-                    {/* {!isMobile && (
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item as={Link} to="/action">Action</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="/another-action">Another action</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item as={Link} to="/something-else">Something else</NavDropdown.Item>
-                        </NavDropdown>
-                    )} */}
-                </Nav>
-               
-            </Navbar.Collapse>
-        </Navbar>
+        <Navbar bg="light" expand="lg" className="navbar-expand-lg">
+        <Navbar.Brand as={Link} to="/addEmp">
+            <img src="/images/STIE.png" width="90" height="40" alt="Logo" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+                <Nav.Link as={Link} to="/addEmp" className={activeLink === 'Add User' ? 'active' : ''} onClick={() => setActiveLink('Add User')}>
+                    Add Employee
+                </Nav.Link>
+                <Nav.Link as={Link} to="/profile/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
+                    View Employee
+                </Nav.Link>
+            </Nav>
+        </Navbar.Collapse>
+    </Navbar>
     );
 }
 

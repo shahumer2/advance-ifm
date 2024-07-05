@@ -103,9 +103,9 @@ const ViewProfile = () => {
                   <Link to={`/profile/update/${person.id}`} style={{ fontSize: "15px", width: "120px", marginRight: "3px" }}>
                     <FaEdit size="20px" />
                   </Link>
-                  <button onClick={() => handleDelete(person.id)} className='btn btn-secondary'>
-                    <MdDelete size="25px" />
-                  </button>
+                
+                    <MdDelete onClick={() => handleDelete(person.id)} size="25px" />
+                
                 </td>
               </tr>
             ))}

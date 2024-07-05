@@ -1,6 +1,11 @@
 
 
 @media print {
+  #qr-card {
+    width: 100%;
+    height: auto;
+    margin: 0 auto; /* Center the card horizontally */
+  }
     .hide-on-print {
       display: none;
     }

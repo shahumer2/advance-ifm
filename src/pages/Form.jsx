@@ -71,11 +71,9 @@ function FormComponent() {
       <div className="card mr-3 ml-3 w-full h-full">
         <div className="card-body bg-white">
           <h2 className="font-weight-bold text-center text-uppercase">
-            Card Form Details
+           Add Employee
           </h2>
-          <Link to={`/profile/view`} style={{width:"200px",alignItems:"center"}} className="btn btn-primary ">
-            View Persons
-          </Link>
+         
           <hr style={{ height: '1px', borderWidth: '0', color: 'black', backgroundColor: 'black' }} />
           <div className="container-fluid mt-1">
             <form onSubmit={handleSubmit} className="mt-2" encType="multipart/form-data">

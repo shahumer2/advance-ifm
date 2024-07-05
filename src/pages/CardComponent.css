@@ -31,7 +31,7 @@
 .card-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+
     width: 550px;
     height: auto;
 }
@@ -46,7 +46,7 @@
     .card-group .card1,
     .card-group .card {
         flex: 1 1 50%;
-        max-width: 50%;
+        max-width: 300px;
     }
 }
 
@@ -171,7 +171,13 @@
 .list-item.selected {
     background-color: #d79717;
     color: #fff;
+    width: "200px";
+    display: inline-block; /* Ensures the background color spans the full width */
+ padding-right: 80px;
+     /* Adjust padding as needed */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
 }
+
 
 .list-item a {
     text-decoration: none;
@@ -180,4 +186,12 @@
 
 .list-item.selected a {
     color: #fff;
+}
+
+@media (max-width: 768px) {
+    .navbar-expand-lg .navbar-collapse {
+        flex-basis: 100%;
+        width: 00px;
+        justify-content: center;
+    }
 }
