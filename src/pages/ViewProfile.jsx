@@ -59,7 +59,7 @@ const ViewProfile = () => {
     <div className="container mt-5 mb-8 p-10" style={{ padding: '12px', backgroundColor: "white" }}>
       <div style={{ marginBottom: '12px', backgroundColor: "white" }}>
         <div className="d-flex justify-content-center mt-3 mb-3 font-bold">
-          <h2>Persons List</h2>
+          <h2>Employee List</h2>
         </div>
       </div>
 
