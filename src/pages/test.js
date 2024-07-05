@@ -9,9 +9,13 @@ const ViewProfile = () => {
   const [size, setSize] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
 
+  useEffect(() => {
+    fetchPersons(page, size);
+  }, [page, size]);
+
   const fetchPersons = async (page, size) => {
     try {
-      const response = await fetch(`http://localhost:8089/profile/view`, {
+      const response = await fetch(`http://localhost:8089/profile/view?page=${page}&size=${size}`, {
         method: 'GET',
       });
       const data = await response.json();
@@ -21,10 +25,6 @@ const ViewProfile = () => {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    fetchPersons(page, size);
-  }, [page, size]);
 
   const handleNextPage = () => {
     if (page < totalPages - 1) {
@@ -39,7 +39,6 @@ const ViewProfile = () => {
   };
 
   const handleDelete = async (id) => {
-    console.log("came herew");
     try {
       const response = await fetch(`http://localhost:8089/profile/${id}`, {
         method: 'DELETE',

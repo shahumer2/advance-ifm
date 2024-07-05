@@ -10,6 +10,23 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: #000;
 }
+.qrcard {
+    width: 500px;
+    height: 290px;
+    background: #D7B442;
+    background-size: cover;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    gap: 10px;
+   
+   /* Center horizontally */
+  }
 
 .card-group {
     display: flex;

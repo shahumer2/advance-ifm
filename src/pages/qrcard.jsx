@@ -33,7 +33,7 @@ const CardComponent = () => {
     console.log(cardData, "kiki");
 
     return (
-        <div className="container">
+        <div style={{justifyContent:"center"}} className="container ">
             <div className="card-group mt-5">
                 <div className="card card1">
                     <div className="header" style={{ display: 'flex', alignItems: 'center' }}>

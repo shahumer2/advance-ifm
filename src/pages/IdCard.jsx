@@ -61,7 +61,7 @@ const QrCard = () => {
     <>
       <div
         id="qr-card"
-        className="card text-dark qr-card"
+        className="qrcard text-dark qr-card"
         style={{
           width: '500px',
           height: '290px',
@@ -76,6 +76,7 @@ const QrCard = () => {
           gridTemplateColumns: '1fr 1px 2fr 1fr',
           alignItems: 'center',
           gap: '10px',
+          margin:"20px"
         }}
       >
         <div className="logo d-flex justify-content-center align-items-center">
