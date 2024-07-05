@@ -45,7 +45,7 @@ const CardComponent = () => {
                         </div>
                     </div>
 
-                    <div className="bg1" style={{ height: "250px", display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <div className="bg1" style={{ paddingTop:"13px", height: "250px", display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                         <div style={{textAlign:"center"}}>
                             <div className='flex-row'>
                             <h4>{cardData.firstName+" "}{cardData.lastName} </h4>
@@ -100,8 +100,8 @@ const CardComponent = () => {
                 </div>
 
                 <div className="card flex">
-                    <div style={{ backgroundColor: "white" }}>
-                        <img src={`data:image/jpg;base64,${cardData.photo}`} alt="Logo" style={{ width: '270px', height: '200px' }} />
+                    <div  style={{ backgroundColor: "white" }}>
+                        <img className='imgg' src={`data:image/jpg;base64,${cardData.photo}`} alt="Logo" style={{ width: '270px', height: '200px' }} />
                     </div>
                     <div style={{ padding: "20px", paddingBottom: "20px" }} className="bg2 flex-column card2">
                         <div className="info-item mt-2" style={{ display: 'flex', alignItems: 'center', paddingBottom: "20px" }}>
