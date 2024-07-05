@@ -64,6 +64,7 @@ const CardComponent = () => {
                         <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', height: '100%' }}>
                             <form className="social-media-img-container" style={{ display: 'inline-block', marginBlockEnd: 0, marginTop: 0 }} method="post">
                                 <button
+                                className='btnsave'
                                 disabled
                                     name="download"
                                     value="download"
