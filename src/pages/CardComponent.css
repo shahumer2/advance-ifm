@@ -59,9 +59,15 @@
 }
 
 @media (max-width: 576px) {
+
+    .imgg{
+        width: 20px;
+    }
     .card-group {
         flex-direction: row;
-        gap: 5px;
+        width: 300px;
+        
+     
     }
     .card-group .card1,
     .card-group .card {
