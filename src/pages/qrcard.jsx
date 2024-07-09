@@ -105,7 +105,7 @@ const CardComponent = () => {
                     <div  style={{ backgroundColor: "white" }}>
                         <img className='imgg' src={`data:image/jpg;base64,${cardData.photo}`} alt="Logo" style={{ width: '270px', height: '200px' }} />
                     </div>
-                    <div style={{ padding: "20px", paddingBottom: "20px" }} className="bg2 flex-column card2">
+                    <div style={{ padding: "20px", paddingBottom: "25px" }} className="bg2 flex-column card2">
                         <div className="info-item mt-2" style={{ display: 'flex', alignItems: 'center', paddingBottom: "20px" }}>
                             <FaMobileScreenButton color='white' size="20px" />
                             <p className='text-white' style={{ marginLeft: '10px' }}>{cardData.mobileNumber}</p>
