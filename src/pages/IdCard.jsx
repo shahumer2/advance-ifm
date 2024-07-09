@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image'; // Import dom-to-image library
 import './QrCard.css'; // Import the CSS file
+import { QR_CODE } from '../constants/utils';
 
 const QrCard = () => {
   const { id } = useParams();
@@ -100,7 +101,7 @@ const QrCard = () => {
             </div>
           </div>
           <div className="qr d-flex justify-content-center align-items-center">
-            <img ref={qrCodeRef} src={`http://localhost:8089/profile/qrcode/${id}`} alt="QR Code" style={{ width: '90px', height: '130px' }} />
+            <img ref={qrCodeRef} src={`${QR_CODE}/${id}`} alt="QR Code" style={{ width: '90px', height: '130px' }} />
           </div>
           <div className="description" style={{ gridColumn: 'span 4', fontSize: '11px', marginLeft: '130px' }}>
             Advancer IFM provides innovation-driven, data-led and people-powered integrated facility management and workforce solutions for commercial, industrial, residential, healthcare & hospitality sectors.

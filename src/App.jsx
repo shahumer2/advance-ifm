@@ -19,7 +19,13 @@ function App() {
         <Route path="/" element={<FormComponent />} />
           <Route path="/addEmp" element={<FormComponent />} />
           <Route path="/profile/view" element={<ViewProfile />} />
+
+
+
           <Route path="/profile/:id" element={<CardComponent />} />
+          <Route path="/stiecards/profile/:id" element={<CardComponent />} />
+
+
           <Route path="/card/:id" element={<QrCard />} />
           <Route path="/profile/update/:id" element={<UpdateEmp />} />
         </Routes>

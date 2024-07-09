@@ -8,16 +8,17 @@ import { IoLocation } from "react-icons/io5";
 import { FaGlobe } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import { GET_CARD } from '../constants/utils';
 
 const CardComponent = () => {
     const [cardData, setcardData] = useState([]);
     const { id } = useParams();
 
-    console.log(id, "jujuj");
+
 
     const fetchDetails = async () => {
         try {
-            const response = await fetch(`http://localhost:8089/profile/${id}`, {
+            const response = await fetch(`${GET_CARD}/${id}`, {
                 method: 'GET',
             });
             const data = await response.json();

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { GET_CARD, GET_EMP } from '../constants/utils';
 
 const ViewProfile = () => {
   const [persons, setPersons] = useState([]);
@@ -11,7 +12,7 @@ const ViewProfile = () => {
 
   const fetchPersons = async (page, size) => {
     try {
-      const response = await fetch(`http://localhost:8089/profile/view?page=${page}`, {
+      const response = await fetch(`${GET_EMP}?page=${page}`, {
         method: 'GET',
       });
       const data = await response.json();
@@ -40,7 +41,7 @@ const ViewProfile = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8089/profile/${id}`, {
+      const response = await fetch(`${GET_CARD}/${id}`, {
         method: 'DELETE',
       });
 
@@ -51,6 +52,7 @@ const ViewProfile = () => {
         alert('Failed to delete profile');
       }
     } catch (error) {
+
       console.error('Error deleting profile:', error);
     }
   };

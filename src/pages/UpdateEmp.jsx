@@ -7,6 +7,7 @@ import { TbDeviceLandlinePhone, TbWorldLatitude } from "react-icons/tb";
 import { IoFileTrayFullSharp } from "react-icons/io5";
 import { TiWorld } from "react-icons/ti";
 import { AiFillProfile } from "react-icons/ai";
+import { GET_CARD, UPDATE_EMP } from '../constants/utils';
 
 function UpdateEmp() {
   const { id } = useParams();
@@ -53,7 +54,7 @@ function UpdateEmp() {
 
   const getEmp = async () => {
     try {
-      const response = await fetch(`http://localhost:8089/profile/${id}`, {
+      const response = await fetch(`${GET_CARD}/${id}`, {
         method: "GET"
       });
 
@@ -102,7 +103,7 @@ function UpdateEmp() {
         }
       });
 
-      const response = await fetch(`http://localhost:8089/profile/update/${id}`, {
+      const response = await fetch(`${UPDATE_EMP}/${id}`, {
         method: "PUT",
         body: formDataToSend
       });
