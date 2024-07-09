@@ -15,6 +15,8 @@ const CardComponent = () => {
     const { id } = useParams();
 
 
+    console.log(window.location,"location");
+
 
     const fetchDetails = async () => {
         try {

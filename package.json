@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "proxy": "http://localhost:8089",
   "dependencies": {
     "bootstrap": "^5.3.3",
     "dom-to-image": "^2.6.0",
