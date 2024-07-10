@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { DEL_CARD, GET_CARD, GET_EMP } from '../constants/utils';
+import { DEL_CARD, GET_EMP } from '../constants/utils';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
@@ -11,8 +11,8 @@ const ViewProfile = () => {
   const { currentUser } = useSelector((state) => state?.persisted?.user);
   const { token } = currentUser;
   const [persons, setPersons] = useState([]);
-  const [page, setPage] = useState(1);
-  const [size, setSize] = useState(10);
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(2);  // You can adjust the page size as needed
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
 
@@ -20,15 +20,14 @@ const ViewProfile = () => {
     try {
       const response = await fetch(`${GET_EMP}?page=${page}`, {
         method: 'GET',
-        headers: {
-          "Authorization": `Bearer ${token}`
+        headers:{
+          "Authorization":`Bearer ${token}`
         }
       });
       const data = await response.json();
-      console.log(data, "shuuu");
+      console.log(data,"shuuu");
       setPersons(data.content);
       setTotalPages(data.totalPages);
-      setTotalItems(data.totalElements)
     } catch (error) {
       console.error(error);
     }
@@ -39,13 +38,13 @@ const ViewProfile = () => {
   }, [page, size]);
 
   const handleNextPage = () => {
-    if (page < totalPages) {
+    if (page < totalPages - 1) {
       setPage(page + 1);
     }
   };
 
   const handlePreviousPage = () => {
-    if (page > 1) {
+    if (page > 0) {
       setPage(page - 1);
     }
   };
@@ -137,14 +136,14 @@ const ViewProfile = () => {
         </table>
       </div>
 
-      <div className="d-flex justify-content-between">
-        <button className="btn btn-secondary" onClick={handlePreviousPage} disabled={page === 1}>
+      <div className="d-flex justify-content-between align-items-center mt-3">
+        <button className="btn btn-secondary" onClick={handlePreviousPage} disabled={page === 0}>
           Previous
         </button>
         <span>
-          Page {page } of {totalPages} | Total Items: {totalItems}
+          Page {page + 1} of {totalPages} | Total Items: {totalItems}
         </span>
-        <button className="btn btn-secondary" onClick={handleNextPage} disabled={page === totalPages}>
+        <button className="btn btn-secondary" onClick={handleNextPage} disabled={page === totalPages - 1}>
           Next
         </button>
       </div>
@@ -154,3 +153,16 @@ const ViewProfile = () => {
 };
 
 export default ViewProfile;
+
+
+
+
+
+<span>
+Page {page + 1} of {totalPages} | Total Items: {totalItems}
+</span>
+
+
+
+
+

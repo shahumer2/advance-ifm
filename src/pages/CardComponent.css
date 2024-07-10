@@ -41,6 +41,22 @@
     flex: 1 1 100%;
     max-width: 100%;
 }
+.font-custom {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px; /* Adjust the size as needed */
+  }
+
+  .user-info-box {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 5px 10px; /* Padding around the box */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.user-image {
+    width: 30px; /* Small size for the user image */
+    height: 30px;
+}
+
 
 @media (min-width: 768px) {
     .card-group .card1,

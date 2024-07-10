@@ -11,7 +11,7 @@ import { ADD_EMP } from '../constants/utils';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
-
+import './CardComponent.css'
 function FormComponent() {
   const { currentUser } = useSelector((state) => state?.persisted?.user);
   const { token } = currentUser;
@@ -82,7 +82,7 @@ function FormComponent() {
     <section className="sec" style={{ padding: '2rem' }}>
       <div className="card mr-3 ml-3 w-full h-full">
         <div className="card-body bg-white">
-          <h2 className="font-weight-bold text-center text-uppercase mb-5">
+          <h2 className="font-weight-bold text-center text-uppercase mb-1 font-custom">
            Add Employee
           </h2>
          
@@ -272,7 +272,7 @@ function FormComponent() {
                       <option value="Security & Technology">Security & Technology</option>
                     </select>
                     <div className="input-group-append">
-                      <span className="input-group-text">Company Name</span>
+                      <span className="input-group-text">Department Name</span>
                     </div>
                   </div>
                 </div>
