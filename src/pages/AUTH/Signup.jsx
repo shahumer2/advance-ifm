@@ -54,7 +54,7 @@ const Signup = () => {
                 </nav>
 
                 <div id="intro" className="bg-image shadow-2-strong">
-                    <div className="mask d-flex align-items-center h-100" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}>
+                    <div className="mask d-flex align-items-center h-70" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}>
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div className="col-xl-5 col-md-8">
@@ -119,7 +119,7 @@ const Signup = () => {
                                         <div className="row mb-4">
                                             <div className="row text-center d-flex align-items-center justify-content-center">
                                                 <p className="mb-0 me-2">Already have an account?</p>
-                                                <a href="/sign-in">Sign In</a>
+                                                <a href="/auth/signin">Sign In</a>
                                             </div>
                                         </div>
                                         <div className="items-center text-center">
