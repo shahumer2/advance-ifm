@@ -32,11 +32,11 @@ function AppContent() {
       {shouldDisplayNavbar && <CustomNavbar />}
       <ToastContainer {...options} />
       <Routes>
-          <Route path="/" element={<SignIn />} />
         <Route path="/auth/signin" element={<SignIn />} />
         <Route path="/auth/signup" element={<Signup />} />
         
         {/* Public routes */}
+          <Route path="/" element={<FormComponent />} />
         <Route path="/profile/viewCard/:id" element={<CardComponent />} />
         <Route path="/card/:id" element={<QrCard />} />
         
