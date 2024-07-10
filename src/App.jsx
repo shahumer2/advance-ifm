@@ -32,6 +32,7 @@ function AppContent() {
       {shouldDisplayNavbar && <CustomNavbar />}
       <ToastContainer {...options} />
       <Routes>
+          <Route path="/" element={<SignIn />} />
         <Route path="/auth/signin" element={<SignIn />} />
         <Route path="/auth/signup" element={<Signup />} />
         
@@ -41,7 +42,6 @@ function AppContent() {
         
         {/* Protected routes */}
         <Route element={<PrivateRoute />}>
-          <Route path="/" element={<FormComponent />} />
           <Route path="/addEmp" element={<FormComponent />} />
           <Route path="/profile/view" element={<ViewProfile />} />
           <Route path="/profile/update/:id" element={<UpdateEmp />} />
