@@ -49,19 +49,19 @@ const Signup = () => {
 
                 <nav className="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style={{ zIndex: 2000 }}>
                     <div className="container-fluid">
-                        <img src="/images/STIE.png" alt="Logo" style={{ width: '70px', height: '30px' }} />
+                        <img src="/images/STIE.png" alt="Logo" style={{ width: '70px', height: '43px' }} />
                     </div>
                 </nav>
 
                 <div id="intro" className="bg-image shadow-2-strong">
-                    <div className="mask d-flex align-items-center h-70" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}>
+                    <div className="mask d-flex align-items-center h-100" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div className="col-xl-5 col-md-8">
-                                    <form className="bg-white rounded shadow-5-strong p-5" onSubmit={(e) => handleSubmit(e)}>
+                                    <form className="rounded shadow-5-strong p-5" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)'   }} onSubmit={(e) => handleSubmit(e)}>
                                         {error && <div className="alert alert-danger">{error}</div>}
                                         <div className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="form1Example1">NAME</label>
+                                            <label className="form-label text-white" htmlFor="form1Example1">NAME</label>
                                             <input
                                                 type="text"
                                                 id="form1Example1"
@@ -72,7 +72,7 @@ const Signup = () => {
                                             />
                                         </div>
                                         <div className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="form1Example2">PHONE NUMBER</label>
+                                            <label className="form-label text-white" htmlFor="form1Example2">PHONE NUMBER</label>
                                             <input
                                                 type="text"
                                                 id="form1Example2"
@@ -83,7 +83,7 @@ const Signup = () => {
                                             />
                                         </div>
                                         <div className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="form1Example3">ADDRESS</label>
+                                            <label className="form-label text-white" htmlFor="form1Example3">ADDRESS</label>
                                             <input
                                                 type="text"
                                                 id="form1Example3"
@@ -94,7 +94,7 @@ const Signup = () => {
                                             />
                                         </div>
                                         <div className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="form1Example4">USERNAME</label>
+                                            <label className="form-label text-white" htmlFor="form1Example4">USERNAME</label>
                                             <input
                                                 type="text"
                                                 id="form1Example4"
@@ -105,7 +105,7 @@ const Signup = () => {
                                             />
                                         </div>
                                         <div className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="form1Example5">PASSWORD</label>
+                                            <label className="form-label text-white" htmlFor="form1Example5">PASSWORD</label>
                                             <input
                                                 type="password"
                                                 id="form1Example5"
@@ -118,12 +118,12 @@ const Signup = () => {
 
                                         <div className="row mb-4">
                                             <div className="row text-center d-flex align-items-center justify-content-center">
-                                                <p className="mb-0 me-2">Already have an account?</p>
-                                                <a href="/auth/signin">Sign In</a>
+                                                <p className="mb-0 me-2 text-white">Already have an account?  <a href="/auth/signin"style={{textDecoration:"none", color:"red"}}>Sign In</a></p>
+                                                
                                             </div>
                                         </div>
                                         <div className="items-center text-center">
-                                            <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                                            <button type="submit" className="btn btn-danger btn-block">Sign Up</button>
                                         </div>
                                     </form>
                                 </div>

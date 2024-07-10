@@ -78,15 +78,15 @@ const SignIn= () => {
                     </div>
                 </nav>
 
-                <div id="intro" className="bg-image shadow-2-strong">
-                    <div className="mask d-flex align-items-center h-100" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}>
-                        <div className="container">
+                <div id="intro" className="bg-image shadow-1-strong">
+                    <div className="mask d-flex align-items-center h-100" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
+                        <div className="container" >
                             <div className="row justify-content-center">
                                 <div className="col-xl-5 col-md-8">
-                                    <form className="bg-white rounded shadow-5-strong p-5" onSubmit={handleSubmit}>
+                                <form className="rounded shadow-8-strong p-5" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }} onSubmit={handleSubmit}>
                                         {error && <div className="alert alert-danger">{error}</div>}
                                         <div className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="form1Example1">USERNAME</label>
+                                            <label className="form-label text-white" htmlFor="form1Example1">USERNAME</label>
                                             <input
                                                 type="text"
                                                 id="form1Example1"
@@ -98,7 +98,7 @@ const SignIn= () => {
                                         </div>
 
                                         <div className="form-outline mb-4">
-                                            <label className="form-label" htmlFor="form1Example2">PASSWORD</label>
+                                            <label className="form-label text-white" htmlFor="form1Example2">PASSWORD</label>
                                             <input
                                                 type="password"
                                                 id="form1Example2"
@@ -111,12 +111,12 @@ const SignIn= () => {
 
                                         <div className="row mb-4">
                                             <div className="row text-center d-flex align-items-center justify-content-center">
-                                                <p className="mb-0 me-2">Don't Have An Account?</p>
-                                                <a href="/auth/signup">SignUp</a>
+                                                <p className="mb-0 me-2 text-white">Don't Have An Account?  <a href="/auth/signup" style={{textDecoration:"none", color:"red"}}>  SignUp</a></p>
+                                               
                                             </div>
                                         </div>
                                         <div className="items-center text-center">
-                                            <button type="submit" className="btn btn-primary btn-block">Sign in</button>
+                                            <button type="submit" className="btn btn-danger">Sign in</button>
                                         </div>
                                     </form>
                                 </div>
