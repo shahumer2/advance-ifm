@@ -8,8 +8,12 @@ import { IoFileTrayFullSharp } from "react-icons/io5";
 import { TiWorld } from "react-icons/ti";
 import { AiFillProfile } from "react-icons/ai";
 import { GET_CARD, UPDATE_EMP } from '../constants/utils';
-
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 function UpdateEmp() {
+
+  const { currentUser } = useSelector((state) => state?.persisted?.user);
+  const { token } = currentUser;
   const { id } = useParams();
   const navigate = useNavigate();
   const [empData, setEmpData] = useState({});
@@ -55,7 +59,10 @@ function UpdateEmp() {
   const getEmp = async () => {
     try {
       const response = await fetch(`${GET_CARD}/${id}`, {
-        method: "GET"
+        method: "GET",
+        headers:{
+          "Authorization":`Bearer ${token}`
+        },
       });
 
       const data = await response.json();
@@ -105,11 +112,16 @@ function UpdateEmp() {
 
       const response = await fetch(`${UPDATE_EMP}/${id}`, {
         method: "PUT",
-        body: formDataToSend
+        body: formDataToSend,
+        headers:{
+          "Authorization":`Bearer ${token}`
+        },
+
       });
 
       if (response.ok) {
         const data = await response.json();
+        toast.success(" Employee Updated Successfully !");
         console.log(data, "Response from server");
         navigate("/profile/view");
       } else {

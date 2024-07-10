@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { GET_CARD, GET_EMP } from '../constants/utils';
+import { DEL_CARD, GET_CARD, GET_EMP } from '../constants/utils';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux';
 
 const ViewProfile = () => {
+  const { currentUser } = useSelector((state) => state?.persisted?.user);
+  const { token } = currentUser;
   const [persons, setPersons] = useState([]);
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(10);
@@ -14,6 +19,9 @@ const ViewProfile = () => {
     try {
       const response = await fetch(`${GET_EMP}?page=${page}`, {
         method: 'GET',
+        headers:{
+          "Authorization":`Bearer ${token}`
+        }
       });
       const data = await response.json();
       setPersons(data.content);
@@ -40,21 +48,36 @@ const ViewProfile = () => {
   };
 
   const handleDelete = async (id) => {
-    try {
-      const response = await fetch(`${GET_CARD}/${id}`, {
-        method: 'DELETE',
-      });
+    toast.promise(
+      new Promise(async (resolve, reject) => {
+        try {
+          if (window.confirm("Are you sure you want to delete this profile?")) {
+            const response = await fetch(`${DEL_CARD}/${id}`, {
+              method: 'DELETE',
+              headers:{
+                "Authorization":`Bearer ${token}`
+              },
+            });
 
-      if (response.ok) {
-        setPersons(persons.filter(person => person.id !== id));
-        alert('Profile deleted successfully');
-      } else {
-        alert('Failed to delete profile');
+            if (response.ok) {
+              setPersons(persons.filter(person => person.id !== id));
+              resolve('Profile deleted successfully');
+            } else {
+              reject('Failed to delete profile');
+            }
+          } else {
+            reject('Delete action canceled');
+          }
+        } catch (error) {
+          reject('Error deleting profile');
+        }
+      }),
+      {
+        pending: 'Deleting profile...',
+        success: 'Profile deleted successfully 👌',
+        error: 'Failed to delete profile 🤯'
       }
-    } catch (error) {
-
-      console.error('Error deleting profile:', error);
-    }
+    );
   };
 
   return (
@@ -95,7 +118,7 @@ const ViewProfile = () => {
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/profile/${person.id}`} className="btn btn-secondary" style={{ fontSize: "15px", width: "120px" }}>
+                  <Link to={`/profile/viewCard/${person.id}`} className="btn btn-secondary" style={{ fontSize: "15px", width: "120px" }}>
                     View Card
                   </Link>
                 </td>
@@ -103,9 +126,7 @@ const ViewProfile = () => {
                   <Link to={`/profile/update/${person.id}`} style={{ fontSize: "15px", width: "120px", marginRight: "3px" }}>
                     <FaEdit size="20px" />
                   </Link>
-                 
-                    <MdDelete onClick={() => handleDelete(person.id)} size="25px" />
-                 
+                  <MdDelete onClick={() => handleDelete(person.id)} size="25px" />
                 </td>
               </tr>
             ))}
@@ -121,6 +142,7 @@ const ViewProfile = () => {
           Next
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 };

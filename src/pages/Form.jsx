@@ -8,9 +8,13 @@ import { IoFileTrayFullSharp } from "react-icons/io5";
 import { TiWorld } from "react-icons/ti";
 import { AiFillProfile } from "react-icons/ai";
 import { ADD_EMP } from '../constants/utils';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux';
 
 function FormComponent() {
-
+  const { currentUser } = useSelector((state) => state?.persisted?.user);
+  const { token } = currentUser;
   const navigate=useNavigate();
   const [formData, setFormData] = useState({
     firstName: '',
@@ -56,11 +60,18 @@ function FormComponent() {
 
       const response = await fetch(ADD_EMP, {
         method: "POST",
+        headers:{
+          "Authorization":`Bearer ${token}`
+        },
         body: formDataToSend
       });
       
       const data = await response.json();
-      console.log(data, "Response from server");
+      toast.success(" Employee Added Successfully !");
+      // console.log(data, "Response from server");
+     
+     
+
       navigate("/profile/view")
     } catch (error) {
       console.log(error);
