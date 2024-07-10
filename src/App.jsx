@@ -17,10 +17,15 @@ import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
 
 function AppContent() {
   const location = useLocation();
-  const [count, setCount] = useState(0);
   const { currentUser } = useSelector((state) => state.persisted.user);
 
-  const shouldDisplayNavbar = location.pathname !== '/auth/signin' && location.pathname !== '/auth/signup';
+  // Utility function to check if the path is one of the public routes that should not show the navbar
+  const isPublicRouteWithoutNavbar = (pathname) => {
+    return pathname === '/auth/signin' || pathname === '/auth/signup' ||
+           (!currentUser && (pathname === '/profile/viewCard/:id' || pathname === '/card/:id'));
+  };
+
+  const shouldDisplayNavbar = !isPublicRouteWithoutNavbar(location.pathname);
 
   return (
     <div>
@@ -35,7 +40,7 @@ function AppContent() {
         <Route path="/card/:id" element={<QrCard />} />
         
         {/* Protected routes */}
-        <Route element={<PrivateRoute  />}>
+        <Route element={<PrivateRoute />}>
           <Route path="/" element={<FormComponent />} />
           <Route path="/addEmp" element={<FormComponent />} />
           <Route path="/profile/view" element={<ViewProfile />} />
@@ -45,8 +50,6 @@ function AppContent() {
     </div>
   );
 }
-
-
 
 function App() {
   return (

@@ -9,6 +9,11 @@ import { signoutSuccess } from '../redux/Slice/userSlice';
 
 function CustomNavbar() {
     const { currentUser } = useSelector((state) => state?.persisted?.user);
+
+    if (!currentUser) {
+        return null; // Return null if there is no current user
+    }
+
     const { token, user } = currentUser;
     const username = user.username;
     const navigate = useNavigate();
@@ -26,40 +31,42 @@ function CustomNavbar() {
             setActiveLink('View Only');
         }
     }, [location.pathname]); // Run effect whenever location.pathname changes
-    // const handleLogout = () => {
-    //     try {
-    //       dispatch(signoutSuccess());
-    //       navigate("/auth/signin")
-    //     } catch (error) {
-    
-    //     }
-    //   }
 
 
-    const handleLogout = async (e) => {
-        e.preventDefault();
+     const handleLogout = () => {
         try {
-            const response = await fetch(`${LOGOUT_URL}/logout`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                credentials: "include"
-            });
-
-            if (response.ok) {
-                toast.success("Logout Successfully!");
-                navigate("/auth/signin");
-            } else {
-                console.error('Failed to log out');
-                toast.error("Failed to log out. Please try again.");
-            }
+          dispatch(signoutSuccess());
+          navigate("/auth/signin")
         } catch (error) {
-            console.log(error);
-            toast.error("An error occurred. Please try again.");
+    
         }
-    };
+      }
+
+
+    // const handleLogout = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const response = await fetch(`${LOGOUT_URL}/logout`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Authorization": `Bearer ${token}`
+    //             },
+    //             credentials: "include"
+    //         });
+
+    //         if (response.ok) {
+    //             toast.success("Logout Successfully!");
+    //             navigate("/auth/signin");
+    //         } else {
+    //             console.error('Failed to log out');
+    //             toast.error("Failed to log out. Please try again.");
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //         toast.error("An error occurred. Please try again.");
+    //     }
+    // };
 
     return (
         <Navbar bg="light" expand="lg" className="navbar-expand-lg">
@@ -77,7 +84,7 @@ function CustomNavbar() {
                     </Nav.Link>
                 </Nav>
                 <Nav>
-                    <NavDropdown title={username} id="basic-nav-dropdown" >
+                    <NavDropdown title={username} id="basic-nav-dropdown">
                         <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
