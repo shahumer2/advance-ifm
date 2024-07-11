@@ -11,14 +11,17 @@ import { FaLinkedin } from "react-icons/fa";
 import { GET_CARD } from '../constants/utils';
 
 const CardComponent = () => {
+  
     const styles = {
         infoItem: {
             display: 'flex',
             paddingBottom: "30px",
-            flexWrap: 'wrap', // Allows the content to wrap
+            // flexWrap: 'wrap', 
+            alignItems: 'center'
+            // Allows the content to wrap
         },
         emailText: {
-            marginLeft: '29px',
+           
             wordBreak: 'break-all', // Breaks long words
         }
     };
