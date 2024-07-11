@@ -14,9 +14,7 @@ const CardComponent = () => {
     const styles = {
         infoItem: {
             display: 'flex',
-           
             paddingBottom: "30px",
-            
             flexWrap: 'wrap', // Allows the content to wrap
         },
         emailText: {
@@ -26,10 +24,6 @@ const CardComponent = () => {
     };
     const [cardData, setcardData] = useState([]);
     const { id } = useParams();
-
-
-    console.log(window.location,"location");
-
 
     const fetchDetails = async () => {
         try {
@@ -46,10 +40,38 @@ const CardComponent = () => {
     useEffect(() => {
         fetchDetails();
     }, []);
-    console.log(cardData, "kiki");
+
+    const generateVCard = () => {
+        const vCardData = `
+BEGIN:VCARD
+VERSION:3.0
+FN:${cardData.firstName} ${cardData.lastName}
+ORG:${cardData.companyName}
+TITLE:${cardData.profession}
+TEL;TYPE=CELL:${cardData.mobileNumber}
+TEL;TYPE=WORK:${cardData.alternateNumber}
+EMAIL:${cardData.email}
+ADR;TYPE=WORK:;;${cardData.street};${cardData.state};;${cardData.pincode};${cardData.country}
+URL:${cardData.linkedInUrl}
+END:VCARD
+        `;
+        return vCardData;
+    };
+
+    const downloadVCard = () => {
+        const vCardData = generateVCard();
+        const blob = new Blob([vCardData], { type: 'text/vcard' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${cardData.firstName}_${cardData.lastName}.vcf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     return (
-        <div style={{justifyContent:"center"}} className="container ">
+        <div style={{ justifyContent: "center" }} className="container ">
             <div className="card-group mt-5">
                 <div className="card card1">
                     <div className="header" style={{ display: 'flex', alignItems: 'center' }}>
@@ -61,10 +83,10 @@ const CardComponent = () => {
                         </div>
                     </div>
 
-                    <div className="bg1" style={{ paddingTop:"13px", height: "250px", display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                        <div style={{textAlign:"center"}}>
+                    <div className="bg1" style={{ paddingTop: "13px", height: "250px", display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                        <div style={{ textAlign: "center" }}>
                             <div className='flex-row'>
-                            <h4>{cardData.firstName+" "}{cardData.lastName} </h4>
+                                <h4>{cardData.firstName + " "}{cardData.lastName} </h4>
                             </div>
                             <h6 style={{ fontSize: "15px" }}>{cardData.profession}</h6>
                             <h6 style={{ fontSize: "15px" }}>{cardData.profile}</h6>
@@ -80,10 +102,9 @@ const CardComponent = () => {
                         <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', height: '100%' }}>
                             <form className="social-media-img-container" style={{ display: 'inline-block', marginBlockEnd: 0, marginTop: 0 }} method="post">
                                 <button
-                                className='btnsave'
-                                disabled
-                                    name="download"
-                                    value="download"
+                                    className='btnsave'
+                                    onClick={downloadVCard}
+                                    type="button"
                                     style={{
                                         border: '2px solid #414042',
                                         width: '150px',
@@ -117,7 +138,7 @@ const CardComponent = () => {
                 </div>
 
                 <div className="card flex">
-                    <div  style={{ backgroundColor: "white" }}>
+                    <div style={{ backgroundColor: "white" }}>
                         <img className='imgg' src={`data:image/jpg;base64,${cardData.photo}`} alt="Logo" style={{ width: '270px', height: '200px' }} />
                     </div>
                     <div style={{ padding: "20px", paddingBottom: "25px" }} className="bg2 flex-column card2">

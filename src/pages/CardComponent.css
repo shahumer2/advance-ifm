@@ -76,11 +76,11 @@
 @media (max-width: 576px) {
 
     .imgg{
-        width: 190px !important; 
+        width: 210px !important; 
     }
     .card-group {
         flex-direction: row;
-        width: 399px;
+        width: 420px;
         
     }
     .btnsave{
@@ -88,7 +88,7 @@
         width: 120px !important;
     }
     .bg2{
-        height:400px !important;
+        height:420px !important;
     }
     .card-group .card1,
     .card-group .card {

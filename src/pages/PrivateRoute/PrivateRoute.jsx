@@ -5,7 +5,7 @@ import { Outlet, Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = () => {
   const { currentUser } = useSelector((state) => state.persisted.user);
-  
+
   useEffect(() => {
     if (!currentUser) {
       window.location.reload();
