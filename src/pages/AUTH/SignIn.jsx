@@ -85,7 +85,7 @@ const SignIn = () => {
                         <div className="container" >
                             <div className="row justify-content-center">
                                 <div className="col-xl-5 col-md-8">
-                                    <form className="rounded shadow-8-strong p-5" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }} onSubmit={handleSubmit}>
+                                    <form className="rounded shadow-8-strong p-5" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }} onSubmit={handleSubmit}>
                                         {error && <div className="alert alert-danger">{error}</div>}
                                         <div className="form-outline mb-4">
                                             <label className="form-label text-white" htmlFor="form1Example1">USERNAME</label>

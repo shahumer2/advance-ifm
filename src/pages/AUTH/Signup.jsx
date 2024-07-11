@@ -32,7 +32,7 @@ const Signup = () => {
                     {`
            #intro {
             background-image: url(https://images.unsplash.com/photo-1478031706604-bb4b7b0b4e9e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fG9wZW4lMjBzb3VyY2V8ZW58MHx8MHx8fDA%3D);
-            height: 102.1vh;
+            height: 100.1vh;
             background-size: cover
             
           }
@@ -51,16 +51,16 @@ const Signup = () => {
 
                 <nav className="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style={{ zIndex: 2000 }}>
                     <div className="container-fluid">
-                        <img src="/images/STIE.png" alt="Logo" style={{ width: '70px', height: '43px' }} />
+                        <img src="/images/STIE.png" alt="Logo" style={{ width: '70px', height: '42px' }} />
                     </div>
                 </nav>
 
                 <div id="intro" className="bg-image shadow-2-strong">
-                    <div className="mask d-flex align-items-center h-100" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+                    <div className="mask d-flex align-items-center h-100" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div className="col-xl-5 col-md-8">
-                                    <form className="rounded shadow-5-strong p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)'   }} onSubmit={(e) => handleSubmit(e)}>
+                                    <form className="rounded shadow-5-strong p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)'  }} onSubmit={(e) => handleSubmit(e)}>
                                         {error && <div className="alert alert-danger">{error}</div>}
                                         <div className="form-outline mb-4">
                                             <label className="form-label text-white" htmlFor="form1Example1">NAME</label>
