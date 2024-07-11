@@ -32,7 +32,7 @@
     display: flex;
     flex-wrap: wrap;
 
-    width: 550px;
+    width: 560px;
     height: auto;
 }
 
@@ -47,8 +47,8 @@
   }
 
   .user-info-box {
-    background-color: #f8f9fa; /* Light background color */
-    padding: 5px 10px; /* Padding around the box */
+    background-color: #e5eaef; /* Light background color */
+    padding: 7px 19px; /* Padding around the box */
     border-radius: 5px; /* Rounded corners */
 }
 
@@ -77,7 +77,7 @@
 @media (max-width: 576px) {
 
     .imgg{
-        width: 190px !important; 
+        width: 210px !important; 
     }
     .card-group {
         flex-direction: row;
@@ -89,7 +89,8 @@
         width: 120px !important;
     }
     .bg2{
-        height:400px !important;
+        height:415px !important;
+        width: 210px !important;
     }
     .card-group .card1,
     .card-group .card {

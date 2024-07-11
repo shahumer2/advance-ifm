@@ -11,6 +11,19 @@ import { FaLinkedin } from "react-icons/fa";
 import { GET_CARD } from '../constants/utils';
 
 const CardComponent = () => {
+    const styles = {
+        infoItem: {
+            display: 'flex',
+           
+            paddingBottom: "30px",
+            
+            flexWrap: 'wrap', // Allows the content to wrap
+        },
+        emailText: {
+            marginLeft: '29px',
+            wordBreak: 'break-all', // Breaks long words
+        }
+    };
     const [cardData, setcardData] = useState([]);
     const { id } = useParams();
 
@@ -116,9 +129,9 @@ const CardComponent = () => {
                             <BsTelephoneForward color='white' size="20px" />
                             <p className='text-white' style={{ marginLeft: '10px' }}>{cardData.alternateNumber}</p>
                         </div>
-                        <div className="info-item mt-2" style={{ display: 'flex', alignItems: 'center', paddingBottom: "20px" }}>
+                        <div className="info-item email-info mt-2" style={styles.infoItem} >
                             <MdEmail color='white' size="20px" />
-                            <p className='text-white' style={{ marginLeft: '10px' }}>{cardData.email}</p>
+                            <p className='text-white' style={styles.emailText}>{cardData.email}</p>
                         </div>
                         <div className="info-item mt-2" style={{ display: 'flex', paddingBottom: "20px" }}>
                             <IoLocation color='white' size="20px" />
