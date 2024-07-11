@@ -30,9 +30,11 @@ const Signup = () => {
             <header>
                 <style>
                     {`
-          #intro {
-            background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
-            height: 100vh;
+           #intro {
+            background-image: url(https://images.unsplash.com/photo-1478031706604-bb4b7b0b4e9e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fG9wZW4lMjBzb3VyY2V8ZW58MHx8MHx8fDA%3D);
+            height: 102.1vh;
+            background-size: cover
+            
           }
 
           @media (min-width: 992px) {
@@ -58,7 +60,7 @@ const Signup = () => {
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div className="col-xl-5 col-md-8">
-                                    <form className="rounded shadow-5-strong p-5" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)'   }} onSubmit={(e) => handleSubmit(e)}>
+                                    <form className="rounded shadow-5-strong p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)'   }} onSubmit={(e) => handleSubmit(e)}>
                                         {error && <div className="alert alert-danger">{error}</div>}
                                         <div className="form-outline mb-4">
                                             <label className="form-label text-white" htmlFor="form1Example1">NAME</label>
