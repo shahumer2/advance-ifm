@@ -418,7 +418,6 @@ function FormComponent() {
               <div className="row">
                 <div className="col-md-12 mt-3 info">
                   <strong>Note:</strong>
-
                   <span style={{ color: "red" }}>*</span>
                   <small> Upload Image Less Than 2 Mb.</small>
 
