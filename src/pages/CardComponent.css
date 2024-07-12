@@ -226,3 +226,62 @@
     justify-content: center;
   }
 }
+
+
+
+
+.sec {
+    padding: 2rem;
+    
+  }
+  
+  .card {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  .card-body {
+    padding: 2rem;
+  }
+  
+  .font-custom {
+    font-family: "Arial", sans-serif;
+  }
+  
+  .input-group-text {
+    background-color: #f0f0f0;
+  }
+  
+  input,
+  select,
+  button {
+    transition: all 0.3s ease;
+  }
+  
+  input:focus,
+  select:focus,
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+  }
+  
+  button:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .custom-button {
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-button:hover {
+    background-color: #0056b3;
+    color: #fff;
+  }
+  
+  .info small {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
