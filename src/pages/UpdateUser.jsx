@@ -11,6 +11,7 @@ function UpdateUser() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
+  const [Role, setRole] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     phoneNumber: '',
@@ -22,6 +23,7 @@ function UpdateUser() {
 
   useEffect(() => {
     getUser();
+    fetchRole();
   }, []);
 
   useEffect(() => {
@@ -49,24 +51,55 @@ function UpdateUser() {
     }
   };
 
+  const fetchRole = async () => {
+    try {
+      const response = await fetch(`${GET_USER}/allRoles`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "Application/json",
+          "Authorization": `Bearer ${token}`,
+        }
+      });
+      const data = await response.json();
+      console.log(data, "Roles fetched");
+      setRole(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-  
-  console.log(formData, "jamkashhhh");
+
+  console.log(formData, "FormData");
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
+    if (
+      formData.phoneNumber.length < 10 ||
+      formData.phoneNumber.length > 12
+   
+    ) {
+      toast.error("Phone numbers must be between 10 and 12 digits.");
+      return;
+    }
     try {
+      const selectedRole = Role.find(r => r.name === formData.role);
       const dataToSend = {
-       
+        name: formData.name,
+        phoneNumber: formData.phoneNumber,
+        address: formData.address,
+        username: formData.username,
+      
         role: {
-          id: 0, // Assuming 0 or any appropriate id based on your role data
-          name: formData.role,
-          users: [id] // Assuming you want to send the user's ID here
+          id: selectedRole.id,
+          name:selectedRole.name
         }
       };
+      console.log(dataToSend,"jumuuuuuuuuuuu");
 
       const response = await fetch(`${UPDATE_USER}/${id}`, {
         method: "PUT",
@@ -81,7 +114,7 @@ function UpdateUser() {
         const data = await response.json();
         toast.success("User Updated Successfully!");
         console.log(data, "Response from server");
-        navigate("/profile/view");
+        navigate("/user/view");
       } else {
         console.error('Failed to update profile');
       }
@@ -91,7 +124,7 @@ function UpdateUser() {
   };
 
   const firstAuthority = formData.role || 'No role assigned';
-  console.log(firstAuthority, "jump");
+  console.log(firstAuthority, "Current role");
 
   return (
     <section className="sec" style={{ padding: '2rem' }}>
@@ -203,8 +236,11 @@ function UpdateUser() {
                       onChange={handleChange}
                     >
                       <option value="">Choose One...</option>
-                      <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-                      <option value="ROLE_USER">ROLE_USER</option>
+                      {Role.map((role) => (
+                        <option key={role.id} value={role.name}>
+                          {role.name}
+                        </option>
+                      ))}
                     </select>
                     <div className="input-group-append">
                       <span className="input-group-text">Select Role</span>

@@ -16,7 +16,13 @@ const ViewUser = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
 
+
   const fetchusers = async (page, size) => {
+
+
+
+
+
     try {
       const response = await fetch(`${GET_USER}?page=${page}`, {
         method: 'GET',
@@ -38,6 +44,7 @@ const ViewUser = () => {
 
   useEffect(() => {
     fetchusers(page, size);
+
   }, [page, size]);
 
   const handleNextPage = () => {
