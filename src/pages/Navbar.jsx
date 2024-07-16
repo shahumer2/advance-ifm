@@ -43,15 +43,14 @@ function CustomNavbar() {
             <Navbar.Brand as={Link} to="/addEmp">
                 <img src="/images/STIE.png" width="90" height="40" alt="Logo" />
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
-                <Nav className="mr-auto">
-                    <Nav.Link as={Link} to="/addEmp" className={activeLink === 'Add User' ? 'active' : ''} onClick={() => setActiveLink('Add User')}>
+                    <Nav.Link  style={{marginRight:"12px",marginLeft:"4px"}}as={Link} to="/addEmp" className={activeLink === 'Add User' ? 'active' : ''} onClick={() => setActiveLink('Add User')}>
                         Add Employee
                     </Nav.Link>
-                    <Nav.Link as={Link} to="/profile/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
+                    <Nav.Link  style={{marginRight:"12px"}} as={Link} to="/profile/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
                         View Employee
                     </Nav.Link>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
                     {
                         user.authorities[0].authority === "ROLE_ADMIN" &&
                         <Nav.Link as={Link} to="/user/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
@@ -59,6 +58,7 @@ function CustomNavbar() {
                         </Nav.Link>
 
                     }
+                <Nav className="mr-auto">
                 </Nav>
                 <Nav>
                     <div className="user-info-box d-flex align-items-center">

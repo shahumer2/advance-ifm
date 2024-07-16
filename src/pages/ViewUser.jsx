@@ -33,7 +33,7 @@ const ViewUser = () => {
         }
       });
       const data = await response.json();
-      console.log(data, "shuuu");
+
       setusers(data.content);
       setTotalPages(data.totalPages);
       setTotalItems(data.totalElements)

@@ -68,7 +68,7 @@ function UpdateEmp() {
 
       const data = await response.json();
       setEmpData(data);
-      console.log(data, "Response from server");
+ 
     } catch (error) {
       console.log(error);
     }
@@ -123,7 +123,7 @@ function UpdateEmp() {
       if (response.ok) {
         const data = await response.json();
         toast.success(" Employee Updated Successfully !");
-        console.log(data, "Response from server");
+      
         navigate("/profile/view");
       } else {
         console.error('Failed to update profile');
@@ -132,7 +132,7 @@ function UpdateEmp() {
       console.log(error);
     }
   };
-  console.log(formData,"jiooooooooooo");
+
 
   return (
     <section className="sec" style={{ padding: '2rem' }}>

@@ -219,13 +219,7 @@
   color: #fff;
 }
 
-@media (max-width: 768px) {
-  .navbar-expand-lg .navbar-collapse {
-    flex-basis: 100%;
-    width: 00px;
-    justify-content: center;
-  }
-}
+
 
 
 

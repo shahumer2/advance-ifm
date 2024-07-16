@@ -37,7 +37,7 @@ const SignIn = () => {
             const data = await res.json();
 
             if (res.ok) {
-                console.log(data, "juju");
+              
                 dispatch(signInSuccess(data));
                 navigate('/');
             } else {

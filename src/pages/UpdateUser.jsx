@@ -45,7 +45,7 @@ function UpdateUser() {
 
       const data = await response.json();
       setUserData(data);
-      console.log(data, "Response from server");
+ 
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +61,7 @@ function UpdateUser() {
         }
       });
       const data = await response.json();
-      console.log(data, "Roles fetched");
+ 
       setRole(data);
     } catch (error) {
       console.error(error);
@@ -73,7 +73,7 @@ function UpdateUser() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  console.log(formData, "FormData");
+
 
   const handleSubmit = async (e) => {
 
@@ -99,7 +99,7 @@ function UpdateUser() {
           name:selectedRole.name
         }
       };
-      console.log(dataToSend,"jumuuuuuuuuuuu");
+
 
       const response = await fetch(`${UPDATE_USER}/${id}`, {
         method: "PUT",
@@ -113,7 +113,7 @@ function UpdateUser() {
       if (response.ok) {
         const data = await response.json();
         toast.success("User Updated Successfully!");
-        console.log(data, "Response from server");
+
         navigate("/user/view");
       } else {
         console.error('Failed to update profile');
@@ -124,7 +124,7 @@ function UpdateUser() {
   };
 
   const firstAuthority = formData.role || 'No role assigned';
-  console.log(firstAuthority, "Current role");
+
 
   return (
     <section className="sec" style={{ padding: '2rem' }}>

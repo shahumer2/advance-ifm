@@ -15,7 +15,7 @@ const ViewProfile = () => {
   const [size, setSize] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
-console.log("token...",token)
+
 
 useEffect(() => {
   fetchPersons(page, size);
@@ -33,12 +33,12 @@ useEffect(() => {
         }
       });
       const data = await response.json();
-      console.log(data, "shuuu",response);
+
       setPersons(data.content);
       setTotalPages(data.totalPages);
       setTotalItems(data.totalElements)
     } catch (error) {
-      console.log(response+"resp....")
+ 
       console.error(error);
     }
   };
