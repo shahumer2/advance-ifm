@@ -16,7 +16,7 @@ function CustomNavbar() {
     const username = user.username;
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
+  
     const location = useLocation();
     const [activeLink, setActiveLink] = useState('Add User');
     const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -52,11 +52,18 @@ function CustomNavbar() {
                     <Nav.Link as={Link} to="/profile/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
                         View Employee
                     </Nav.Link>
+                    {
+                        user.authorities[0].authority === "ROLE_ADMIN" &&
+                        <Nav.Link as={Link} to="/user/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
+                            View User
+                        </Nav.Link>
+
+                    }
                 </Nav>
                 <Nav>
                     <div className="user-info-box d-flex align-items-center">
                         <img src="/images/default-user.png" className="user-image rounded-circle text-lg" alt="User" />
-                        <NavDropdown style={{fontSize:"20px", textTransform:"capitalize"}} title={username} id="basic-nav-dropdown" className="ml-2">
+                        <NavDropdown style={{ fontSize: "20px", textTransform: "capitalize" }} title={username} id="basic-nav-dropdown" className="ml-2">
                             <NavDropdown.Item onClick={handleLogout} >Logout</NavDropdown.Item>
                         </NavDropdown>
                     </div>

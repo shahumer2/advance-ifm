@@ -34,6 +34,8 @@ export const UPDATE_EMP=`${BASE_URL}/profile/update`
 export const SIGNIN_URL=`${BASE_URL}/api/v1/auth/signin`
 export const SIGNUP_URL=`${BASE_URL}/api/v1/auth/signup`
 export const LOGOUT_URL=`${BASE_URL}/api/v1/auth`
+export const GET_USER=`${BASE_URL}/user`
+export const UPDATE_USER=`${BASE_URL}/user/update`
 
 
 export const options = {

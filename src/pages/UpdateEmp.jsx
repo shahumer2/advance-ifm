@@ -32,7 +32,8 @@ function UpdateEmp() {
     pincode: '',
     profession: '',
     photo: null,
-    photoPreview: ''
+    photoPreview: '',
+    role:""
   });
 
   useEffect(() => {
@@ -131,6 +132,7 @@ function UpdateEmp() {
       console.log(error);
     }
   };
+  console.log(formData,"jiooooooooooo");
 
   return (
     <section className="sec" style={{ padding: '2rem' }}>
@@ -405,7 +407,8 @@ function UpdateEmp() {
                     />
                   </div>
                 </div>
-                <div className="col-md-12 mb-3">
+              
+                <div className="col-md-6 mb-3">
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <div className="input-group-text">
@@ -422,6 +425,31 @@ function UpdateEmp() {
                       value={formData.profession}
                       onChange={handleChange}
                     />
+                  </div>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <div className="input-group">
+                    <div className="input-group-prepend">
+                      <div className="input-group-text">
+                        <IoFileTrayFullSharp size="25px" />
+                      </div>
+                    </div>
+                    <select
+                      className="custom-select form-control"
+                      name="role"
+                      id="inlineFormCustomSelectPref"
+                      required
+                      value={formData.role}
+                      onChange={handleChange}
+                    >
+                      <option value="">Choose One...</option>
+                      <option value="Advancer IFM Services">ROLE_ADMIN</option>
+                      <option value="Cleaning & Stewarding">ROLE_USER</option>
+                  
+                    </select>
+                    <div className="input-group-append">
+                      <span className="input-group-text">Select Role</span>
+                    </div>
                   </div>
                 </div>
               </div>

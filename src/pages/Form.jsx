@@ -47,18 +47,38 @@ function FormComponent() {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setFormData((prevData) => ({ ...prevData, photo: file }));
-
-    // Preview photo (if needed)
-    const reader = new FileReader();
-    reader.onload = () => {
-      document.getElementById("photoPreview").src = reader.result;
-    };
-    reader.readAsDataURL(file);
+    if (file) {
+      if (file.size > 2 * 1024 * 1024) {
+        toast.error("Photo size must be less than 2MB");
+        e.target.value = null;
+      } else {
+        setFormData((prevData) => ({ ...prevData, photo: file }));
+        
+        // Preview photo (if needed)
+        const reader = new FileReader();
+        reader.onload = () => {
+          document.getElementById("photoPreview").src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // if (formData.photo=="null") {
+    //   toast.error("Please select a photo.");
+    //   return;
+    // }
+    if (
+      formData.mobileNumber.length < 10 ||
+      formData.mobileNumber.length > 12 ||
+      formData.alternateNumber.length < 10 ||
+      formData.alternateNumber.length > 12
+    ) {
+      toast.error("Phone numbers must be between 10 and 12 digits.");
+      return;
+    }
     try {
       const formDataToSend = new FormData();
       Object.keys(formData).forEach((key) => {
@@ -74,10 +94,11 @@ function FormComponent() {
       });
 
       const data = await response.json();
+        g(data,"jujujuju");
       toast.success("Employee Added Successfully!");
       navigate("/profile/view");
     } catch (error) {
-      console.log(error);
+        g(error);
     }
   };
 
@@ -389,7 +410,7 @@ function FormComponent() {
                 </div>
               </div>
             </div>
-            <div className="row">
+            {/* <div className="row">
               <div className="col-md-12 mt-3 info">
                 <strong>Note:</strong>
                 <span style={{ color: "red" }}>*</span>
@@ -401,15 +422,15 @@ function FormComponent() {
                   <small> All Fields Are Mandatory </small>
                 </p>
               </div>
-              <div className="container text-center mt-3">
-                <button
-                  style={{ width: "150px" }}
-                  className="btn btn-outline-primary custom-button"
-                  type="submit"
-                >
-                  Save
-                </button>
-              </div>
+            </div> */}
+            <div className="container text-center mt-3">
+              <button
+                style={{ width: "150px" }}
+                className="btn btn-outline-primary custom-button"
+                type="submit"
+              >
+                Save
+              </button>
             </div>
           </form>
         </div>

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { SIGNUP_URL } from "../constants/utils.js";
 
 const UseSignup = (formData) => {
-    console.log(formData,"lolo");
+      g(JSON.stringify(formData),"lolo");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -11,7 +11,7 @@ const UseSignup = (formData) => {
         try {
             const response = await fetch(SIGNUP_URL, {
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 method: "POST",
                 body: JSON.stringify(formData)

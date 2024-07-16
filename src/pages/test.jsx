@@ -25,7 +25,7 @@ const ViewProfile = () => {
         }
       });
       const data = await response.json();
-      console.log(data,"shuuu");
+        g(data,"shuuu");
       setPersons(data.content);
       setTotalPages(data.totalPages);
     } catch (error) {

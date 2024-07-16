@@ -2,48 +2,44 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { DEL_CARD, GET_CARD, GET_EMP } from '../constants/utils';
+import { DEL_CARD, GET_CARD, GET_EMP, GET_USER } from '../constants/utils';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 
-const ViewProfile = () => {
+const ViewUser = () => {
   const { currentUser } = useSelector((state) => state?.persisted?.user);
   const { token } = currentUser;
-  const [persons, setPersons] = useState([]);
+  const [users, setusers] = useState([]);
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
-console.log("token...",token)
 
-useEffect(() => {
-  fetchPersons(page, size);
-}, []);
-
-  const fetchPersons = async (page, size) => {
+  const fetchusers = async (page, size) => {
     try {
-      const response = await fetch(`${GET_EMP}`, {
+      const response = await fetch(`${GET_USER}?page=${page}`, {
         method: 'GET',
         headers: {
-          "Authorization" : `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          "Access-Control-Allow-Origin": "*",
-
+          "Content-Type":"Application/json",
+          "Authorization": `Bearer ${token}`,
+         
         }
       });
       const data = await response.json();
-      console.log(data, "shuuu",response);
-      setPersons(data.content);
+      console.log(data, "shuuu");
+      setusers(data.content);
       setTotalPages(data.totalPages);
       setTotalItems(data.totalElements)
     } catch (error) {
-      console.log(response+"resp....")
       console.error(error);
     }
   };
 
-  
+  useEffect(() => {
+    fetchusers(page, size);
+  }, [page, size]);
+
   const handleNextPage = () => {
     if (page < totalPages) {
       setPage(page + 1);
@@ -69,7 +65,7 @@ useEffect(() => {
             });
 
             if (response.ok) {
-              setPersons(persons.filter(person => person.id !== id));
+              setusers(users.filter(person => person.id !== id));
               resolve('Profile deleted successfully');
             } else {
               reject('Failed to delete profile');
@@ -93,7 +89,7 @@ useEffect(() => {
     <div className="container mt-5 mb-8 p-10" style={{ padding: '12px', backgroundColor: "white" }}>
       <div style={{ marginBottom: '12px', backgroundColor: "white" }}>
         <div className="d-flex justify-content-center mt-3 mb-3 font-bold">
-          <h2>Employee List</h2>
+          <h2>Users</h2>
         </div>
       </div>
 
@@ -101,38 +97,29 @@ useEffect(() => {
         <table className="table table-bordered table-striped table-hover">
           <thead>
             <tr className="table-secondary">
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Company Name</th>
-              <th>Profession</th>
+              <th>Name</th>
+              <th>UserName</th>
+              <th>Address</th>
+             
               <th>Mobile Number</th>
-              <th>State</th>
-              <th>View Qr Card</th>
-              <th>View Card</th>
+              <th>Role</th>
+            
+            
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {persons.map((person) => (
+            {users.map((person) => (
               <tr key={person.id}>
-                <td>{person.firstName}</td>
-                <td>{person.lastName}</td>
-                <td>{person.companyName}</td>
-                <td>{person.profession}</td>
-                <td>{person.mobileNumber}</td>
-                <td>{person.state}</td>
+                <td>{person.name}</td>
+                <td>{person.username}</td>
+                <td>{person.address}</td>
+                <td>{person.phoneNumber}</td>
+                <td>{person.authorities[0].authority}</td>
+               
+              
                 <td>
-                  <Link to={`/card/${person.id}`} className="btn btn-primary" style={{ fontSize: "15px", width: "120px" }}>
-                    View Qr Card
-                  </Link>
-                </td>
-                <td>
-                  <Link to={`/profile/viewCard/${person.id}`} className="btn btn-secondary" style={{ fontSize: "15px", width: "120px" }}>
-                    View Card
-                  </Link>
-                </td>
-                <td>
-                  <Link to={`/profile/update/${person.id}`} style={{ fontSize: "15px", width: "120px", marginRight: "3px" }}>
+                  <Link to={`/user/update/${person.id}`} style={{ fontSize: "15px", width: "120px", marginRight: "3px" }}>
                     <FaEdit size="20px" />
                   </Link>
                   <MdDelete onClick={() => handleDelete(person.id)} size="25px" />
@@ -159,4 +146,4 @@ useEffect(() => {
   );
 };
 
-export default ViewProfile;
+export default ViewUser;
