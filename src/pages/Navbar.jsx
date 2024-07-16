@@ -64,6 +64,7 @@ function CustomNavbar() {
                     <div className="user-info-box d-flex align-items-center">
                         <img src="/images/default-user.png" className="user-image rounded-circle text-lg" alt="User" />
                         <NavDropdown style={{ fontSize: "20px", textTransform: "capitalize" }} title={username} id="basic-nav-dropdown" className="ml-2">
+                        <NavDropdown.Item as={Link} to="/user/chnagePassword" style={{  marginRight:"29px",width:"50px" }} >Change Password</NavDropdown.Item>
                             <NavDropdown.Item onClick={handleLogout} >Logout</NavDropdown.Item>
                         </NavDropdown>
                     </div>

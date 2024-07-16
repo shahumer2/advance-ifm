@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
 import ViewUser from './pages/ViewUser';
 import UpdateUser from './pages/UpdateUser';
+import ChangePassword from './pages/ChangePassword';
 
 function AppContent() {
   const location = useLocation();
@@ -30,11 +31,11 @@ function AppContent() {
 
   const shouldDisplayNavbar = !isPublicRouteWithoutNavbar(location.pathname);
 
-  useEffect(() => {
-    if (!currentUser && location.pathname !== '/auth/signin' && location.pathname !== '/auth/signup') {
-      navigate('/auth/signin');
-    }
-  }, [currentUser, location, navigate]);
+  // useEffect(() => {
+  //   if (!currentUser && location.pathname !== '/auth/signin' && location.pathname !== '/auth/signup') {
+  //     navigate('/auth/signin');
+  //   }
+  // }, [currentUser, location, navigate]);
 
   return (
     <div>
@@ -47,11 +48,13 @@ function AppContent() {
         {/* Public routes */}
         <Route path="/" element={<FormComponent />} />
         <Route path="/profile/viewCard/:id" element={<CardComponent />} />
+        <Route path="/profile/:id" element={<CardComponent />} />
         <Route path="/card/:id" element={<QrCard />} />
         
         {/* Protected routes */}
         <Route element={<PrivateRoute />}>
           <Route path="/addEmp" element={<FormComponent />} />
+          <Route path="/user/chnagePassword" element={<ChangePassword />} />
           <Route path="/user/view" element={<ViewUser />} />
           <Route path="/profile/view" element={<ViewProfile />} />
           <Route path="/profile/update/:id" element={<UpdateEmp />} />
