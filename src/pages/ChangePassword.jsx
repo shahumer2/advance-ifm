@@ -31,7 +31,7 @@ function ChangePassword() {
       };
 
       const response = await fetch(`${GET_USER}/change-password`, {
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify(dataToSend),
         headers: {
           "Content-Type": "application/json",
