@@ -59,8 +59,8 @@ function CustomNavbar() {
                     </Nav.Link>
                 }
                 
-                <Nav style={{backgroundColor:"##FFFFF7"}}>
-                    <div className="user-info-box d-flex align-items-center" style={{marginRight:"70px", }}>
+                <Nav style={{backgroundColor:"#e5e5e5",borderRadius:"10px"}}>
+                    <div className="user-info-box d-flex align-items-center" style={{marginRight:"70px", backgroundColor:"#e5e5e5" }}>
                         <img src="/images/default-user.png" className="user-image rounded-circle text-lg" alt="User" />
                         <NavDropdown drop="down" alignRight style={{ fontSize: "20px", textTransform: "capitalize" }} title={username} id="basic-nav-dropdown" className="ml-2">
                             <NavDropdown.Item as={Link} to="/user/changePassword" style={{ marginRight: "29px", width: "10px" }} >
