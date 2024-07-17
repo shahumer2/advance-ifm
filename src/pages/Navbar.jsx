@@ -5,6 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { signoutSuccess } from '../redux/Slice/userSlice';
 import "./CardComponent.css"
+
 function CustomNavbar() {
     const { currentUser } = useSelector((state) => state?.persisted?.user);
 
@@ -43,29 +44,31 @@ function CustomNavbar() {
             <Navbar.Brand as={Link} to="/addEmp">
                 <img src="/images/STIE.png" width="90" height="40" alt="Logo" />
             </Navbar.Brand>
-                    <Nav.Link  style={{marginRight:"12px",marginLeft:"4px"}}as={Link} to="/addEmp" className={activeLink === 'Add User' ? 'active' : ''} onClick={() => setActiveLink('Add User')}>
-                        Add Employee
-                    </Nav.Link>
-                    <Nav.Link  style={{marginRight:"12px"}} as={Link} to="/profile/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
-                        View Employee
-                    </Nav.Link>
+            <Nav.Link style={{ marginRight: "12px", marginLeft: "4px" }} as={Link} to="/addEmp" className={activeLink === 'Add User' ? 'active' : ''} onClick={() => setActiveLink('Add User')}>
+                Add Employee
+            </Nav.Link>
+            <Nav.Link style={{ marginRight: "12px" }} as={Link} to="/profile/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
+                View Employee
+            </Nav.Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
-                    {
-                        user.authorities[0].authority === "ROLE_ADMIN" &&
-                        <Nav.Link as={Link} to="/user/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
-                            View User
-                        </Nav.Link>
-
-                    }
-                <Nav className="mr-auto">
-                </Nav>
-                <Nav>
-                    <div className="user-info-box d-flex align-items-center">
+            <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between " >
+                {
+                    user.authorities[0].authority === "ROLE_ADMIN" &&
+                    <Nav.Link as={Link} to="/user/view" className={activeLink === 'View Only' ? 'active' : ''} onClick={() => setActiveLink('View Only')}>
+                        View User
+                    </Nav.Link>
+                }
+                
+                <Nav style={{backgroundColor:"##FFFFF7"}}>
+                    <div className="user-info-box d-flex align-items-center" style={{marginRight:"70px", }}>
                         <img src="/images/default-user.png" className="user-image rounded-circle text-lg" alt="User" />
-                        <NavDropdown style={{ fontSize: "20px", textTransform: "capitalize" }} title={username} id="basic-nav-dropdown" className="ml-2">
-                        <NavDropdown.Item as={Link} to="/user/chnagePassword" style={{  marginRight:"29px",width:"50px" }} >Change Password</NavDropdown.Item>
-                            <NavDropdown.Item onClick={handleLogout} >Logout</NavDropdown.Item>
+                        <NavDropdown drop="down" alignRight style={{ fontSize: "20px", textTransform: "capitalize" }} title={username} id="basic-nav-dropdown" className="ml-2">
+                            <NavDropdown.Item as={Link} to="/user/changePassword" style={{ marginRight: "29px", width: "10px" }} >
+                                Change Password
+                            </NavDropdown.Item>
+                            <NavDropdown.Item onClick={handleLogout} >
+                                Logout
+                            </NavDropdown.Item>
                         </NavDropdown>
                     </div>
                 </Nav>
