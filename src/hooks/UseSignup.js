@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { SIGNUP_URL } from "../constants/utils.js";
 
 const UseSignup = (formData) => {
-      g(JSON.stringify(formData),"lolo");
+   
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {

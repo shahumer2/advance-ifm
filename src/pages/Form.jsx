@@ -94,11 +94,11 @@ function FormComponent() {
       });
 
       const data = await response.json();
-        g(data,"jujujuju");
+   
       toast.success("Employee Added Successfully!");
       navigate("/profile/view");
     } catch (error) {
-        g(error);
+        console.log(error);
     }
   };
 
