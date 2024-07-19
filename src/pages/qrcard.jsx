@@ -5,24 +5,18 @@ import { FaMobileScreenButton } from "react-icons/fa6";
 import { BsTelephoneForward } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
-import { FaGlobe } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import { FaGlobe, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 import { GET_CARD } from '../constants/utils';
 
 const CardComponent = () => {
-  
     const styles = {
         infoItem: {
             display: 'flex',
             paddingBottom: "30px",
-            // flexWrap: 'wrap', 
             alignItems: 'center'
-            // Allows the content to wrap
         },
         emailText: {
-           
-            wordBreak: 'break-all', // Breaks long words
+            wordBreak: 'break-all',
         }
     };
     const [cardData, setcardData] = useState([]);
@@ -53,17 +47,17 @@ ORG:${cardData.companyName}
 TITLE:${cardData.profession}
 TEL;TYPE=CELL:${cardData.mobileNumber}
 TEL;TYPE=WORK:${cardData.alternateNumber}
-EMAIL:${cardData.email}
+EMAIL;TYPE=INTERNET:${cardData.email}
 ADR;TYPE=WORK:;;${cardData.street};${cardData.state};;${cardData.pincode};${cardData.country}
 URL:${cardData.linkedInUrl}
 END:VCARD
         `;
-        return vCardData;
+        return vCardData.trim();
     };
 
     const downloadVCard = () => {
         const vCardData = generateVCard();
-        const blob = new Blob([vCardData], { type: 'text/vcard' });
+        const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
