@@ -90,7 +90,7 @@ function FormComponent() {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        body: formDataToSend,
+        body: formDataToSend, 
       });
 
       const data = await response.json();
